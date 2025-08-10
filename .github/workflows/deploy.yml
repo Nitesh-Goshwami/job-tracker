@@ -42,8 +42,16 @@ jobs:
       env:
         REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
         
+    - name: Verify Build Output
+      run: |
+        echo "Current directory: $(pwd)"
+        echo "Build directory contents:"
+        ls -la frontend/build/
+        echo "Build directory size:"
+        du -sh frontend/build/
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/build
+        publish_dir: frontend/build
