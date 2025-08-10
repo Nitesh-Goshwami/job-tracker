@@ -2,7 +2,7 @@
   "name": "job-tracker",
   "version": "1.0.0",
   "description": "A job tracking application built with React",
-  "homepage": "https://nitesh-goshwami.github.io/job-tracker",
+  "homepage": "https://Nitesh-Goshwami.github.io/job-tracker",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
