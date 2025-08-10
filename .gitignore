@@ -10,10 +10,10 @@ node_modules/
 .env.production.local
 
 # Build outputs
-build/
-dist/
-*/build/
-*/dist/
+# build/  # Commented out to allow GitHub Pages deployment
+# dist/   # Commented out to allow build outputs
+# */build/  # Commented out to allow build outputs
+# */dist/   # Commented out to allow build outputs
 
 # Logs
 npm-debug.log*
@@ -83,7 +83,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public  # Commented out to allow React public folder
 
 # Storybook build outputs
 .out
