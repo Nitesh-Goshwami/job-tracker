@@ -151,7 +151,7 @@ function AppContent() {
     <div className="app">
       <header className="app-header">
         <div className="header-content">
-          <h1>Job Tracker</h1>
+          <h1>Jobs Tracker</h1>
           <div className="user-info">
             <span>Welcome, {user?.name}</span>
             <button onClick={handleLogout} className="logout-button">
