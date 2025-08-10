@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
 
 jobs:
   build-and-deploy:
@@ -12,50 +12,30 @@ jobs:
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
-        cache-dependency-path: job-tracker/frontend/package-lock.json
-        
-    - name: Debug Directory Structure
-      run: |
-        pwd
-        ls -la
-        echo "Job-tracker directory:"
-        ls -la job-tracker/
-        echo "Frontend directory:"
-        ls -la job-tracker/frontend/
-        echo "Public directory:"
-        ls -la job-tracker/frontend/public/
+        cache-dependency-path: frontend/package-lock.json
         
     - name: Install Dependencies
       run: |
-        cd job-tracker/frontend
+        cd frontend
         npm ci
         
     - name: Build
       run: |
-        cd job-tracker/frontend
+        cd frontend
         npm run build
       env:
         REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
-        
-    - name: Verify Build Output
-      run: |
-        echo "Current directory: $(pwd)"
-        echo "Build directory contents:"
-        ls -la job-tracker/frontend/build/
-        echo "Build directory size:"
-        du -sh job-tracker/frontend/build/
-        
-
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: job-tracker/frontend/build
+        publish_dir: frontend/build
+        force_orphan: true
