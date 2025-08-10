@@ -50,8 +50,31 @@ jobs:
         echo "Build directory size:"
         du -sh frontend/build/
         
+    - name: Change to Root Directory
+      run: |
+        pwd
+        ls -la
+        echo "Current working directory: $(pwd)"
+        
+    - name: Verify Build Directory Exists
+      run: |
+        echo "Checking if frontend/build exists:"
+        if [ -d "frontend/build" ]; then
+          echo "✅ frontend/build directory exists"
+          echo "Contents:"
+          ls -la frontend/build/
+          echo "Size:"
+          du -sh frontend/build/
+        else
+          echo "❌ frontend/build directory NOT found!"
+          echo "Available directories:"
+          ls -la
+          echo "Frontend contents:"
+          ls -la frontend/
+        fi
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: frontend/build
+        publish_dir: ./frontend/build
