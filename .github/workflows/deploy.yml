@@ -73,8 +73,22 @@ jobs:
           ls -la frontend/
         fi
         
+    - name: Copy Build Files to Root
+      run: |
+        echo "Copying build files to root directory..."
+        cp -r frontend/build/* .
+        echo "Root directory contents after copy:"
+        ls -la
+        echo "Checking for index.html:"
+        if [ -f "index.html" ]; then
+          echo "✅ index.html found in root"
+        else
+          echo "❌ index.html NOT found in root"
+        fi
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/build
+        publish_dir: .
+        force_orphan: true
