@@ -36,6 +36,11 @@ const jobSchema = new mongoose.Schema({
     type: String,
     trim: true,
     default: ''
+  },
+  hrDetails: {
+    type: String,
+    trim: true,
+    default: ''
   }
 }, {
   timestamps: true

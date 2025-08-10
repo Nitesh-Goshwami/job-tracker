@@ -93,6 +93,16 @@ function JobItem({ job, isEditing, onEdit, onSave, onCancel, onDelete }) {
             />
           </div>
           
+          <div className="form-group">
+            <label>HR Details:</label>
+            <textarea
+              value={editData.hrDetails || ''}
+              onChange={(e) => setEditData({ ...editData, hrDetails: e.target.value })}
+              rows="2"
+              placeholder="HR contact details, interview notes..."
+            />
+          </div>
+
           <div className="edit-actions">
             <button onClick={handleSave} className="save-btn">Save</button>
             <button onClick={handleCancel} className="cancel-btn">Cancel</button>
@@ -116,6 +126,7 @@ function JobItem({ job, isEditing, onEdit, onSave, onCancel, onDelete }) {
         {job.location && <p><strong>Location:</strong> {job.location}</p>}
         {job.appliedDate && <p><strong>Applied:</strong> {new Date(job.appliedDate).toLocaleDateString()}</p>}
         {job.notes && <p><strong>Notes:</strong> {job.notes}</p>}
+        {job.hrDetails && <p><strong>HR Details:</strong> {job.hrDetails}</p>}
       </div>
       
       <div className="job-actions">

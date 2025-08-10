@@ -7,7 +7,8 @@ function JobForm({ onAddJob }) {
     location: '',
     status: 'Applied',
     appliedDate: '',
-    notes: ''
+    notes: '',
+    hrDetails: ''
   });
 
   const handleSubmit = (e) => {
@@ -26,7 +27,8 @@ function JobForm({ onAddJob }) {
         location: '',
         status: 'Applied',
         appliedDate: '',
-        notes: ''
+        notes: '',
+        hrDetails: ''
       });
     }
   };
@@ -111,6 +113,18 @@ function JobForm({ onAddJob }) {
             value={formData.notes}
             onChange={handleChange}
             rows="3"
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="hrDetails">HR Details</label>
+          <textarea
+            id="hrDetails"
+            name="hrDetails"
+            value={formData.hrDetails}
+            onChange={handleChange}
+            rows="3"
+            placeholder="Enter HR contact details, interview notes, or any HR-related information..."
           />
         </div>
 
