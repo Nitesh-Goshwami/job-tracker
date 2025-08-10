@@ -7,6 +7,7 @@ import JobForm from './components/JobForm';
 import JobList from './components/JobList';
 import JobStats from './components/JobStats';
 
+// API configuration - Railway backend URL
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function AppContent() {
